@@ -4,17 +4,19 @@ import sqlite3
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QTableView
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from PyQt5 import uic
+from pyname import Ui_MainWindow
+from pyname2 import Ui_MainWindow2
 
 
-con = sqlite3.connect('./coffee.sqlite')
+con = sqlite3.connect('./release/data/coffee.sqlite')
 
 cur = con.cursor()
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         
         self.display_coffee()
 
@@ -35,10 +37,10 @@ class MyWidget(QMainWindow):
         self.second_form.show()
 
 
-class EditCoffee(QMainWindow):
+class EditCoffee(QMainWindow, Ui_MainWindow2):
     def __init__(self):
         super().__init__()
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         
         self.db = QSqlDatabase.addDatabase("QSQLITE")
         self.db.setDatabaseName("coffee.sqlite")
