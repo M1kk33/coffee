@@ -28,9 +28,6 @@ class MyWidget(QMainWindow):
                 self.tableWidget.setItem(row, col, item)
 
 
-
-
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyWidget()
