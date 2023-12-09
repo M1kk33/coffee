@@ -8,7 +8,7 @@ from pyname import Ui_MainWindow
 from pyname2 import Ui_MainWindow2
 
 
-con = sqlite3.connect('./release/data/coffee.sqlite')
+con = sqlite3.connect('./data/coffee.sqlite')
 
 cur = con.cursor()
 
@@ -43,7 +43,7 @@ class EditCoffee(QMainWindow, Ui_MainWindow2):
         self.setupUi(self)
         
         self.db = QSqlDatabase.addDatabase("QSQLITE")
-        self.db.setDatabaseName("coffee.sqlite")
+        self.db.setDatabaseName('./data/coffee.sqlite')
 
         self.model = QSqlTableModel(self)
         self.model.setTable("specifications")
